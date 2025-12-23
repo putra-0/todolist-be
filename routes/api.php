@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ChartController;
 use App\Http\Controllers\Api\TodoController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +10,5 @@ Route::controller(TodoController::class)
         Route::post('', 'store');
         Route::get('export', 'export');
     });
+
+Route::get('chart', ChartController::class);
