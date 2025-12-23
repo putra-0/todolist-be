@@ -7,4 +7,5 @@ Route::controller(TodoController::class)
     ->prefix('todos')
     ->group(function () {
         Route::post('', 'store');
+        Route::get('export', 'export');
     });

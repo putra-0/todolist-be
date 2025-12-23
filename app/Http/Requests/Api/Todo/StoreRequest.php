@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Todo;
+namespace App\Http\Requests\Api\Todo;
 
 use App\Enums\TodoPriority;
 use App\Enums\TodoStatus;
@@ -18,10 +18,10 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => ['bail', 'required', 'string', 'max:100'],
-            'assignee' => ['bail', 'nullable', 'string', 'max:100'],
+            'assignee' => ['bail', 'sometimes', 'nullable', 'string', 'max:100'],
             'due_date' => ['bail', 'required', 'date', 'after_or_equal:today'],
-            'time_tracked' => ['bail', 'nullable', 'numeric', 'min:0'],
-            'status' => ['bail', 'required', Rule::enum(TodoStatus::class)],
+            'time_tracked' => ['bail', 'sometimes', 'nullable', 'numeric', 'min:0'],
+            'status' => ['bail', 'sometimes', 'nullable', Rule::enum(TodoStatus::class)],
             'priority' => ['bail', 'required', Rule::enum(TodoPriority::class)],
         ];
     }
